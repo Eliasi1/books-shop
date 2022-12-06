@@ -4,13 +4,14 @@ var gBooks = []
 var gWriters = []
 var STORAGE_KEY = 'bookDB'
 var gFilterBy = {writer : '', maxPrice : 300}
-var gPage = 1
+var gPage = 0
+var gPageItemsCount = 5
 
 
 function getBooks(){
     var filtereByWriter = gBooks.filter((book) => !gFilterBy.writer ? book : gFilterBy.writer === book.writer)
     var filteredByPrice = filtereByWriter.filter((book) => book.price < gFilterBy.maxPrice)
-    return filteredByPrice
+    return filteredByPrice.slice(gPage*gPageItemsCount,gPage*gPageItemsCount+5)
 }
 
 function CreateBooksHTMLStr(){
@@ -114,3 +115,14 @@ function onSelectSortBy(value){
     }
 }
 
+function nextPage(prev){
+    switch (prev) {
+        case true :
+            if (gPage===0) return
+            gPage--
+            break
+        case false :
+            if(gPage === Math.floor(gBooks.length/gPageItemsCount) ) return
+            gPage++
+    }
+}

@@ -4,16 +4,20 @@ function onInit() {
     addBook('harry potter 1', 'Jk.Rowling')
     addBook('harry potter 2', 'Jk.Rowling')
     addBook('harry potter 3', 'Jk.Rowling')
+    addBook('harry potter 4', 'Jk.Rowling')
+    addBook('harry potter 5', 'Jk.Rowling')
+    addBook('harry potter 6', 'Jk.Rowling')
     addBook('the lost simbol', 'Dan Bar-on')
     addBook('tzofen de vinchi', 'Dan Bar-on')
     addBook('the source', 'Dan Bar-on')
     addBook('loonar storm', 'Ohad Elias')
     addBook('irretional man', 'Ohad Elias')
+    addBook('only words', 'Worder Sinner')
+    addBook('sin eater', 'Worder Sinner')
     renderBooks()
 }
 
 function renderBooks() {
-    console.log("Rendering books..")
     var strHTML = CreateBooksHTMLStr()
     document.querySelector(".book-list").innerHTML = strHTML
 }
@@ -65,5 +69,12 @@ function onSetFilterBy(writer) {
 
 function onSelectSortBy(value) {
     onSelectSortBy(value)
+    renderBooks()
+}
+
+function onNextPage(prev=false){
+    nextPage(prev)
+    if (gPage === 0) document.querySelector('.prev-page').classList.add('hidden')
+    else  document.querySelector('.prev-page').classList.remove('hidden')
     renderBooks()
 }

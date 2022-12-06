@@ -36,14 +36,15 @@
             <option value="price">Price</option>
             <option value="writer">Writer</option>
         </select>
+        <button class="add-book" onclick="onCreateBook()">Create new book</button>
+        <button class="btn prev-page hidden" onclick="onNextPage(true)">previous page</button>
+        <button class="btn next-page" onclick="onNextPage()">next page</button>
     </div>
     <table class="books-container">
         <th>Book Cover</th><th>Book details</th><th>actions</th>
         <tbody class="book-list">
         </tbody>
     </table>
-    <button class="add-book" onclick="onCreateBook()">Create new book</button>
-    <button class="next-page" onclick="onNextPage()">next page</button>
 
 
     <script src="js/controller.js"></script>
