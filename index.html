@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Book-shop</title>
+</head>
+
+<body onload="onInit()">
+    <h1><img class="logo-image" src="img/Amazon_icon.png" width="100" height="100"/> Welcome to Emazon!</h1>
+    <section class="book-filter">
+        <h2>Filter</h2>
+        <select class="filter-writer" name="select-writer" onchange="onSetFilterBy({writer: this.value})">
+        </select>
+        <label>
+            Max Price:
+            <input title="300" type="range" min="50" max="300" value="300" class="filter-price-range"
+                onchange="this.title=this.value;onSetFilterBy({maxPrice: this.value})" />
+        </label>
+    </section>
+    <hr>
+    <div class = "brief-modal">
+        <h3></h3>
+        <h4>Book Price: <span></span></h4>
+        <h5>Book Description:</h5>
+        <p></p>
+        <button onclick="onCloseModal()">Close</button>
+    </div>
+    <div>
+        Sort-By
+        <select class="sort-by" onchange="onSelectSortBy(this.value)">
+            <option value="">nothing</option>
+            <option value="price">Price</option>
+            <option value="writer">Writer</option>
+        </select>
+    </div>
+    <table class="books-container">
+        <th>Book Cover</th><th>Book details</th><th>actions</th>
+        <tbody class="book-list">
+        </tbody>
+    </table>
+    <button class="add-book" onclick="onCreateBook()">Create new book</button>
+    <button class="next-page" onclick="onNextPage()">next page</button>
+
+
+    <script src="js/controller.js"></script>
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/book.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+</body>
+
+</html>
